@@ -1,0 +1,50 @@
+package PlanetMel.domain;
+
+import jakarta.persistence.*;
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name = "orders")
+public class Order {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private PlanetMel.domain.Customer customer;
+
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product product;
+
+    private int quantity;
+    private LocalDateTime orderDate;
+    private String shippingAddress;
+
+    public Order() {}
+
+    public Order(PlanetMel.domain.Customer customer, Product product, int quantity) {
+        this.customer = customer;
+        this.product = product;
+        this.quantity = quantity;
+        this.orderDate = LocalDateTime.now();
+    }
+    public String getShippingAddress() { return shippingAddress; }
+    public void setShippingAddress(String shippingAddress) { this.shippingAddress = shippingAddress; }
+
+    public Long getId() { return id; }
+
+    public PlanetMel.domain.Customer getCustomer() { return customer; }
+    public void setCustomer(PlanetMel.domain.Customer customer) { this.customer = customer; }
+
+    public Product getProduct() { return product; }
+    public void setProduct(Product product) { this.product = product; }
+
+    public int getQuantity() { return quantity; }
+    public void setQuantity(int quantity) { this.quantity = quantity; }
+
+    public LocalDateTime getOrderDate() { return orderDate; }
+    public void setOrderDate(LocalDateTime orderDate) { this.orderDate = orderDate; }
+}
