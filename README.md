@@ -6,6 +6,7 @@ A Vaadin + Spring Boot web application for PlanetMel Skin Co. customers to brows
 - Browse all skincare products with images
 - Place orders with name, email, shipping address, and quantity
 - Shared database with the admin desktop app
+-  Products are managed in real time via the Skincare-Admin-App — anything added, edited, or deleted in the admin panel is instantly reflected on the web app
 
 ## Tech Stack
 - Java 
